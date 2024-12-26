@@ -15,9 +15,10 @@ public class Companhia extends Propriedade{
             if(super.proprietario != jogadorVez){
                 int valorPagar = somaDados * this.fatorMultiplicacao;
 
-                jogadorVez.setSaldo(JogadorVez.getSaldo() - valorPagar);
-                super.proprietario.setSaldo(super.proprietario.getSaldo() + valorPagr);
+                jogadorVez.setSaldo(jogadorVez.getSaldo() - valorPagar);
+                super.proprietario.setSaldo(super.proprietario.getSaldo() + valorPagar);
             }
         }
     }
 }
+

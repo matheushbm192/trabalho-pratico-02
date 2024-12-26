@@ -1,3 +1,4 @@
+
 public class Lote extends Propriedade {
     private int valores[];
     private int statusMelhoria = 0; // é incrementado de acordo com o nivel de melhoria da propriedade // criar função parar incrementar status de melhoria
@@ -12,3 +13,4 @@ public class Lote extends Propriedade {
 
 
 }
+

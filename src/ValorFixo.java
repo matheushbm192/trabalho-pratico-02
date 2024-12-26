@@ -4,6 +4,7 @@ public class ValorFixo extends Posicao {
     public ValorFixo(String nome, int valorRegra) {
         super(nome);
         this.valorRegra = valorRegra;
+        
     }
 
     @Override
