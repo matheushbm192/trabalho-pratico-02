@@ -12,8 +12,7 @@ public class Sorte extends Posicao {
     
     //já descontar no saldo do jogador da vez, se possível
     public int sorteReves(){
-        Random sorteio = new Random(); 
-        int valor = sorteio.nextInt(-80, 151);
-        return valor; 
+        Random sorteio = new Random();
+        return sorteio.nextInt(-80, 151);
     }
 }
