@@ -3,20 +3,20 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Jogador {
-    private int saldo;
+    private double saldo;
     private String nome;
     private int numPosicao;
 
-    public Jogador(int saldo, String nome) {
+    public Jogador(double saldo, String nome) {
         this.saldo = saldo;
         this.nome = nome;
     }
 
-    public void setSaldo(int saldo) {
+    public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
 
-    public int getSaldo() {
+    public double getSaldo() {
         return saldo;
     }
 
@@ -52,6 +52,10 @@ public class Jogador {
 
     public int getNumposicao() {
         return numPosicao;
+    }
+
+    public void debito(double valorCompra) {
+        this.saldo -= valorCompra;
     }
 }
 

@@ -5,20 +5,24 @@ public class Imposto extends Posicao {
         super(nome);
     }
 
-    public double valorImposto(double saldo) {
-        double valorImposto;
+    @Override
+    public void acaoDado(int somaDados, Jogador jogadorVez) {
+        super.acaoDado(somaDados, jogadorVez);
 
+        double saldo = jogadorVez.getSaldo();
         if (saldo < 1903.98) {
-            return valorImposto = 0.0;
+            jogadorVez.debito( 0.0);
         } else if (saldo > 1903.99 && saldo < 2826.65) {
-            return valorImposto = 142.80;
+            jogadorVez.debito(142.80);
         } else if (saldo > 2826.66 && saldo < 3751.05) {
-            return valorImposto = 354.80;
+            jogadorVez.debito(354.80);
         } else if (saldo > 3751.06 && saldo < 4664.68) {
-            return valorImposto = 636.13;
+            jogadorVez.debito(636.13);
         } else {
-            return valorImposto = 869.36;
+            jogadorVez.debito(869.36);
         }
     }
+
+
 }
 

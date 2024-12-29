@@ -1,18 +1,21 @@
 import java.util.Random;
 
 public class Sorte extends Posicao {
-    private int sorte;
-    private int reves;
 
-    public Sorte(String nome, int sorte, int reves) {
+
+    public Sorte(String nome) {
         super(nome);
-        this.sorte = sorte;
-        this.reves = reves;
+
     }
     
     //já descontar no saldo do jogador da vez, se possível
-    public int sorteReves(){
+
+    @Override
+    public void acaoDado(int somaDados, Jogador jogadorVez) {
+        super.acaoDado(somaDados, jogadorVez);
+
         Random sorteio = new Random();
-        return sorteio.nextInt(-80, 151);
+        double resultado = sorteio.nextDouble(-80.0, 151.0);
+        jogadorVez.setSaldo(jogadorVez.getSaldo() + resultado);
     }
 }

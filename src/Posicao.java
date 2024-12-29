@@ -11,6 +11,12 @@ public class Posicao {
 
     }
 
+    public String getNome(){
+        return this.nome;
+    }
+    public void setNome(String nome){
+        this.nome = nome;
+    }
     public void sairPosicao(String nome){
         for (int i = 0; i < jogadores.length; i++) {
            if (jogadores[i].getNome().equals(nome)){

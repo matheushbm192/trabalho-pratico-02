@@ -9,6 +9,7 @@ public class ValorFixo extends Posicao {
 
     @Override
     public void acaoDado(int somaDados, Jogador jogadorVez) {
-        super.acaoDado(somaDados, jogadorVez);
+        //valor tirado do alem, não tinha o valor nas instruçoes
+        jogadorVez.debito(valorRegra);
     }
 }

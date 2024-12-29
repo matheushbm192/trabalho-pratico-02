@@ -15,7 +15,7 @@ public class Main {
                 //questionar o jogador de acordo com a posição, oque ele quer fazer
                 //acessa o tabuleiro e depois a posicao que o jogador está, e acessa o metodo açao dado
                 Tabuleiro.getPosicao(jogadorVez.getNumposicao()).acaoDado(resultado, jogadorVez); ;
-                //todo: realizar caminho diferente para cadeia
+                //todo: realizar caminho diferente para cadeia (cadeia é opcional)
                 //todo: sobrescrever o metodo acaoDado nas classes
             }
         }

@@ -1,5 +1,5 @@
 public class Propriedade extends Posicao{
-    private int valorCompra;
+    protected int valorCompra;
     protected Jogador proprietario; // se um proprietario é null, então a propriedade esta a venda
 
     public Propriedade(String nome, Jogador[] jogadores, int valorCompra, Jogador proprietario) {
@@ -13,4 +13,17 @@ public class Propriedade extends Posicao{
         this.valorCompra = valorCompra;
     }
 
+    public void setProprietario(Jogador jogadorVez){
+        super.setNome(jogadorVez.getNome());
+    }
+
+    public int getValorCompra() {
+        return valorCompra;
+    }
+
+    public void comprarPropriedade(Jogador jogadorVez ){
+
+        jogadorVez.debito(valorCompra);
+        setProprietario(jogadorVez);
+    }
 }
