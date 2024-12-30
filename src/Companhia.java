@@ -23,14 +23,16 @@ public class Companhia extends Propriedade{
             }
 
         }
-        
-        if(super.proprietario != jogadorVez){
+        if(super.proprietario != null){
+            if(super.proprietario != jogadorVez){
 
                 int valorPagar = somaDados * this.fatorMultiplicacao;
 
                 jogadorVez.debito(valorPagar);
                 super.proprietario.setSaldo(super.proprietario.getSaldo() + valorPagar);
+            }
         }
+
     }
 }
 

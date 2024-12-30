@@ -14,7 +14,7 @@ public class Propriedade extends Posicao{
     }
 
     public void setProprietario(Jogador jogadorVez){
-        super.setNome(jogadorVez.getNome());
+        this.proprietario = jogadorVez;
     }
 
     public int getValorCompra() {

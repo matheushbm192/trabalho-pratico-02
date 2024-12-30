@@ -2,13 +2,13 @@ import java.util.Scanner;
 
 public class Lote extends Propriedade {
     private int valores[];
-    private int statusMelhoria = 0; // é incrementado de acordo com o nivel de melhoria da propriedade // criar função parar incrementar status de melhoria
+    private int statusMelhoria = 1; // é incrementado de acordo com o nivel de melhoria da propriedade // criar função parar incrementar status de melhoria
 
     Scanner entrada = new Scanner(System.in);
-    public Lote(String nome, int valorCompra, int[] valores, int statusMelhoria) {
+    public Lote(String nome, int valorCompra, int[] valores) {
         super(nome, valorCompra);
         this.valores = valores;
-        this.statusMelhoria = statusMelhoria;
+
         
     }
 
@@ -22,8 +22,8 @@ public class Lote extends Propriedade {
             if(entrada.nextInt() == 1) {
                 super.comprarPropriedade(jogadorVez);
             }
-        } else if (super.proprietario == jogadorVez) {
-            System.out.println("Deseja melhorar o Lote para nivel: " + this.statusMelhoria + 1 + "?");
+        } else if (super.proprietario == jogadorVez && this.statusMelhoria < 3) {
+            System.out.println("Deseja melhorar o Lote para nivel: " + (this.statusMelhoria + 1) + "?");
             System.out.println("1 - Sim \n2-Não");
 
             if(entrada.nextInt() == 1){
@@ -31,13 +31,14 @@ public class Lote extends Propriedade {
                 jogadorVez.debito(super.valorCompra);
             }
         }
+        if(super.proprietario != null) {
+            if (super.proprietario != jogadorVez) {
+                int index = statusMelhoria - 1;
+                int valorPagar = valores[index];
 
-        if(super.proprietario != jogadorVez){
-
-            int valorPagar = valores[statusMelhoria];
-
-            jogadorVez.debito(valorPagar);
-            super.proprietario.setSaldo(super.proprietario.getSaldo() + valorPagar);
+                jogadorVez.debito(valorPagar);
+                super.proprietario.setSaldo(super.proprietario.getSaldo() + valorPagar);
+            }
         }
     }
 }

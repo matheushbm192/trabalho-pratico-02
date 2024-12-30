@@ -1,5 +1,4 @@
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Jogador {
@@ -22,30 +21,37 @@ public class Jogador {
 
     public int jogarDados(){
         Random sorteio = new Random();
-        return sorteio.nextInt(1, 13);
+
+        return sorteio.nextInt(2, 13);
     }
 
     public String getNome(){
         return nome;
     }
 
-    public void convertePosicao(int posicaoExtra){
-        this.numPosicao = (numPosicao - 40) + posicaoExtra;
-    }
+    public void convertePosicao(int resulatadoDado){
+        this.saldo += 200;
+        this.numPosicao = (numPosicao + resulatadoDado) - 40 ;
+    }// 36 + 10 = 46
+
     public void entrarPosicao(int resultadoDado){
          int posicaoFutura = numPosicao + resultadoDado;
+        System.out.println("dado: " + resultadoDado);
+        System.out.println("numposicao: "+numPosicao);
+        System.out.println("futura: "+ posicaoFutura);
          if(posicaoFutura < 40){
-             Tabuleiro.getPosicoes()[numPosicao].entrarPosicao(this);
+             Tabuleiro.getPosicao(numPosicao).entrarPosicao(this);
+             numPosicao =  posicaoFutura;
          } else {
-             convertePosicao(posicaoFutura);
-             Tabuleiro.getPosicoes()[numPosicao].entrarPosicao(this);
+             convertePosicao(resultadoDado);
+             System.out.println("teste: " + numPosicao);
+             Tabuleiro.getPosicao(this.numPosicao).entrarPosicao(this);
          }
 
 
-         numPosicao =  posicaoFutura;
+
     }
     public void sairPosicao(){
-    //todo preparar numPosicao (o jogador precisa ter a informação de qual posicao ele está)
         Tabuleiro.getPosicoes()[numPosicao].sairPosicao(this.nome);
     }
 
