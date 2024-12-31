@@ -6,7 +6,8 @@ public class Posicao {
         this.nome = nome;
         this.jogadores = new Jogador[6];
     }
-
+    
+    //olhar se isso precisa ficar aqui
     public void acaoDado(int somaDados, Jogador jogadorVez){
 
     }
@@ -19,9 +20,12 @@ public class Posicao {
     }
     public void sairPosicao(String nome){
         for (int i = 0; i < jogadores.length; i++) {
-           if (jogadores[i].getNome().equals(nome)){
-               jogadores[i] = null;
-           }
+            if(jogadores[i] != null){
+                if (jogadores[i].getNome().equals(nome)){
+                    jogadores[i] = null;
+                }
+            }
+
 
         }
     }
@@ -35,3 +39,4 @@ public class Posicao {
         }
     }
 }
+
