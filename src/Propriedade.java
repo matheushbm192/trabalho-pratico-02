@@ -26,6 +26,7 @@ public class Propriedade extends Posicao{
 
         jogadorVez.debito(valorCompra);
         setProprietario(jogadorVez);
+        jogadorVez.addPropriedade();
         System.out.println();
         System.out.println("Propriedade " + super.getNome() + " comprada pelo valor de R$" + valorCompra + "." );
         System.out.println(jogadorVez.getNome() + " seu saldo atual após a compra é : R$" + jogadorVez.getSaldo());

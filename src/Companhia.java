@@ -34,7 +34,6 @@ public class Companhia extends Propriedade {
                     entradaValida = true;
                     if (jogadorVez.getSaldo() >= this.valorCompra) {
                         super.comprarPropriedade(jogadorVez);
-                        jogadorVez.getIndexPropriedades().add(this.getNome());
                     } else {
                         System.out.println("Não há saldo suficiente para completar a compra.");
                     }

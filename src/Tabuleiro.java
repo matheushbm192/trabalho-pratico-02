@@ -1,5 +1,6 @@
  
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 
@@ -118,22 +119,34 @@ public class Tabuleiro {
         
     }
     
-    public static void eliminarJogador(Jogador jogador) {
-    System.out.println();
-    System.out.println("------------------------------------------");
-    System.out.println("Jogador(a) " + jogador.getNome() + " foi eliminado(a): Saldo zerado.");
-    System.out.println("------------------------------------------");
-    getJogadores().remove(jogador);
-    
-    
-    
-    if (getJogadores().size() == 1) {
+    public static void eliminarJogador(Jogador jogadorVez) {
+        System.out.println();
+        System.out.println("------------------------------------------");
+        System.out.println("Jogador(a) " + jogadorVez.getNome() + " foi eliminado(a): Saldo zerado.");
+        System.out.println("------------------------------------------");
+        ArrayList<Integer> propriedades = jogadorVez.getIndexPropriedades();
+        for (int i = 0; i < propriedades.size(); i++) {
+
+            if(getPosicao(propriedades.get(i)) instanceof Propriedade ){
+                Propriedade propriedade = (Propriedade) getPosicao(propriedades.get(i));
+                propriedade.setProprietario(null);
+            }
+
+        }
+        for (int i = 0; i < jogadores.size(); i++) {
+            if(Objects.equals(jogadores.get(i).getNome(), jogadorVez.getNome())){
+                jogadores.remove(i);
+            }
+        }
+
+
+        if (getJogadores().size() == 1) {
         System.out.println();
         System.out.println("/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/");
-        System.out.println("Parabéns, " + getJogadores().get(0) + "! Você é o vencedor do Banco IFMG!");
+        System.out.println("Parabéns, " + getJogadores().getFirst().getNome() + "! Você é o vencedor do Banco IFMG!");
         System.out.println("/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/");
         System.exit(0); 
-    }
+     }
 
     }
 }

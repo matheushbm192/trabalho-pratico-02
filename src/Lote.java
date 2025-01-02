@@ -1,18 +1,18 @@
 import java.util.Scanner;
 
 public class Lote extends Propriedade {
-
     private int valores[];
-    private int statusMelhoria = 1;
+    private int statusMelhoria = 1; // é incrementado de acordo com o nivel de melhoria da propriedade // criar função parar incrementar status de melhoria
 
     Scanner entrada = new Scanner(System.in);
-
     public Lote(String nome, int valorCompra, int[] valores) {
         super(nome, valorCompra);
         this.valores = valores;
 
+        
     }
 
+    @Override
     public void acaoDado(int somaDados, Jogador jogadorVez) {
         super.acaoDado(somaDados, jogadorVez);
 
@@ -30,7 +30,6 @@ public class Lote extends Propriedade {
                     entradaValida = true;
                     if (jogadorVez.getSaldo() >= this.valorCompra) {
                         super.comprarPropriedade(jogadorVez);
-                        jogadorVez.getIndexPropriedades().add(this.getNome());
                     } else {
                         System.out.println("Não há saldo suficiente para completar a compra.");
                     }
@@ -41,7 +40,7 @@ public class Lote extends Propriedade {
                     System.out.println("Valor inválido. Por favor, digite 1 - Sim ou 2 - Não.");
                 }
             }
-        } else if (super.proprietario == jogadorVez && this.statusMelhoria == 2) {
+        } else if (super.proprietario == jogadorVez && this.statusMelhoria == 3) {
             System.out.println("Você caiu em sua propriedade " + this.getNome() + ". "
                     + "Ela já chegou no mais alto nível de melhoria. Portanto, nada acontecerá.");
 
@@ -73,14 +72,13 @@ public class Lote extends Propriedade {
                 }
             }
         }
-        if (super.proprietario
-                != null) {
+        if (super.proprietario != null) {
             if (super.proprietario != jogadorVez) {
                 int index = statusMelhoria - 1;
                 int valorPagar = valores[index];
 
-                jogadorVez.debito(valorPagar);
-                System.out.println("Você caiu na propriedade " + this.getNome() + ", que já foi comprada e está no nível " + statusMelhoria + 
+
+                System.out.println("Você caiu na propriedade " + this.getNome() + ", que já foi comprada e está no nível " + statusMelhoria +
                    ". Assim, você deve pagar ao proprietário (" + super.proprietario.getNome() + ") o valor de R$" + valorPagar + ".");
 
                 if (jogadorVez.getSaldo() >= valorPagar) {
@@ -96,3 +94,4 @@ public class Lote extends Propriedade {
         }
     }
 }
+

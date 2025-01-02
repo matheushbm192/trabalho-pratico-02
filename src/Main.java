@@ -12,13 +12,13 @@ public class Main {
         ArrayList<Jogador> listaJogadores = Tabuleiro.getJogadores();
 
         while (Tabuleiro.getQntJogadores() > 1) {
-            ArrayList<Jogador> jogadoresEliminados = new ArrayList<>();
+
 
             for (int i = 0; i < listaJogadores.size(); i++) {
                 Jogador jogadorVez = listaJogadores.get(i);
                 if (jogadorVez.getSaldo() <= 0.0) {
                     System.out.println("Jogador(a) " + jogadorVez.getNome() + " foi eliminado(a): Saldo zerado.");
-                    jogadoresEliminados.add(jogadorVez);
+
                 } else {
                     System.out.println();
                     System.out.println("******************************************");
@@ -43,6 +43,7 @@ public class Main {
                 
                 if (jogadorVez.getSaldo() <= 0.0) {
                     Tabuleiro.eliminarJogador(jogadorVez);
+                    listaJogadores.remove(i);
                 }
 
             }
