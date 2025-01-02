@@ -11,6 +11,7 @@ public class Companhia extends Propriedade {
         this.fatorMultiplicacao = fatorMultiplicacao;
     }
 
+
     @Override
     public void acaoDado(int somaDados, Jogador jogadorVez) {
         super.acaoDado(somaDados, jogadorVez);
@@ -44,6 +45,7 @@ public class Companhia extends Propriedade {
                     System.out.println("Valor inválido. Por favor, digite 1 - Sim ou 2 - Não.");
                 }
             }
+
         }
 
         if (super.proprietario != null) {
