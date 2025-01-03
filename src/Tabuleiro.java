@@ -1,7 +1,6 @@
- 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
-
 
 public class Tabuleiro {
 
@@ -50,7 +49,7 @@ public class Tabuleiro {
         posicoes[15] = new Companhia("Companhia de Táxi", 200, 40);
         posicoes[16] = new Sorte("Sorte/Revés");
         posicoes[17] = new Lote("Interlagos", 250, valores17);
-        posicoes[18] = new Sorte("Lucros ou Dividendos");
+        posicoes[18] = new LucroDividendo("Lucros ou Dividendos");
         posicoes[19] = new Lote("Morumbi", 250, valores19);
         posicoes[20] = new ParadaLivre("Parada Livre");
         posicoes[21] = new Lote("Bangu", 100, valores8);
@@ -98,7 +97,7 @@ public class Tabuleiro {
             int aux = 0; 
             while(aux < quantJogadores){
             System.out.println("Informe o nome do "+ (aux + 1) + "º jogador: ");
-            Jogador jogadorVez = new Jogador(600, entrada.next());
+            Jogador jogadorVez = new Jogador(1500, entrada.next());
             jogadores.add(jogadorVez); 
             aux++;
             }
@@ -113,27 +112,35 @@ public class Tabuleiro {
         return jogadores.size();
     }
 
+    
+    public static void eliminarJogador(Jogador jogadorVez) {
+        System.out.println();
+        System.out.println("------------------------------------------");
+        System.out.println("Jogador(a) " + jogadorVez.getNome() + " foi eliminado(a): Saldo zerado.");
+        System.out.println("------------------------------------------");
+        ArrayList<Integer> propriedades = jogadorVez.getIndexPropriedades();
+        for (int i = 0; i < propriedades.size(); i++) {
 
-    public void iniciarJogo() {
-        
-    }
-    
-    public static void eliminarJogador(Jogador jogador) {
-    System.out.println();
-    System.out.println("------------------------------------------");
-    System.out.println("Jogador(a) " + jogador.getNome() + " foi eliminado(a): Saldo zerado.");
-    System.out.println("------------------------------------------");
-    getJogadores().remove(jogador);
-    
-    
-    
-    if (getJogadores().size() == 1) {
+            if(getPosicao(propriedades.get(i)) instanceof Propriedade ){
+                Propriedade propriedade = (Propriedade) getPosicao(propriedades.get(i));
+                propriedade.setProprietario(null);
+            }
+
+        }
+        for (int i = 0; i < jogadores.size(); i++) {
+            if(Objects.equals(jogadores.get(i).getNome(), jogadorVez.getNome())){
+                jogadores.remove(i);
+            }
+        }
+
+
+        if (getJogadores().size() == 1) {
         System.out.println();
         System.out.println("/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/");
-        System.out.println("Parabéns, " + getJogadores().get(0) + "! Você é o vencedor do Banco IFMG!");
+        System.out.println("Parabéns, " + getJogadores().get(0).getNome() + "! Você é o vencedor do Banco IFMG!");
         System.out.println("/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/");
         System.exit(0); 
-    }
+     }
 
     }
 }

@@ -6,7 +6,7 @@ public class Jogador {
     private double saldo;
     private String nome;
     private int numPosicao;
-    private ArrayList<String> indexPropriedades; 
+    private ArrayList<Integer> indexPropriedades;
 
     public Jogador(double saldo, String nome) {
         this.saldo = saldo;
@@ -31,15 +31,13 @@ public class Jogador {
         return nome;
     }
 
-    public ArrayList<String> getIndexPropriedades() {
-        return indexPropriedades;
+    public void addPropriedade() {
+        indexPropriedades.add(numPosicao);
     }
 
-    public void setIndexPropriedades(ArrayList<String> indexPropriedades) {
-        this.indexPropriedades = indexPropriedades;
+    public ArrayList<Integer> getIndexPropriedades(){
+        return indexPropriedades;
     }
-    
-    
 
     public void convertePosicao(int resulatadoDado) {
         this.saldo += 200;
@@ -74,4 +72,5 @@ public class Jogador {
     public void debito(double valorCompra) { 
         this.saldo -= valorCompra;
     }
+
 }

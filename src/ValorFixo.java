@@ -6,4 +6,8 @@ public class ValorFixo extends Posicao {
         this.valorRegra = valorRegra;
         
     }
+    
+    
 }
+
+
