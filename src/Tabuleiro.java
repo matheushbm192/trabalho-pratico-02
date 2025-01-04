@@ -112,6 +112,10 @@ public class Tabuleiro {
         return jogadores.size();
     }
 
+
+    public void iniciarJogo() {
+        
+    }
     
     public static void eliminarJogador(Jogador jogadorVez) {
         System.out.println();
@@ -137,10 +141,10 @@ public class Tabuleiro {
         if (getJogadores().size() == 1) {
         System.out.println();
         System.out.println("/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/");
-        System.out.println("Parabéns, " + getJogadores().get(0).getNome() + "! Você é o vencedor do Banco IFMG!");
+        System.out.println("Parabéns, " + getJogadores().get(0) + "! Você é o vencedor do Banco IFMG!");
         System.out.println("/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/");
         System.exit(0); 
-     }
+    }
 
     }
 }
